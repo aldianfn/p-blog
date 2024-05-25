@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/users/{user}', [UserController::class, 'update'])->name('user.update');
 
-    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('/profile', [UserController::class, 'index'])->name('user.profile');
 
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });

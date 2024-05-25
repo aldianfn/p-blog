@@ -16,7 +16,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        
+    }
+
+    public function profile()
+    {
+        $title = "Profile";
+
+        if (Auth::check()) {
+            $user = Auth::user();
+        }
+
+        return view('dashboard.profile.index', compact('title', 'user'));
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 Route::group(['middleware' => ['guest']], function() {
@@ -24,6 +25,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/users', [UserController::class, 'show'])->name('user.show');
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/users/{user}', [UserController::class, 'update'])->name('user.update');
+
+    Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 
     Route::get('/profile', [UserController::class, 'index'])->name('user.profile');
 

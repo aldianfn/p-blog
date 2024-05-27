@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('post_details', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->string('attachment_url');
             $table->foreignUuid('post_id')->onDelete('cascade');
             $table->timestamps();

@@ -6,9 +6,6 @@
 <div class="sm:ml-64 min-h-screen">
     @include('dashboard.layouts.navbar')
     <div class="p-4">
-        <h1 class="text-white"">
-            Hello, {{ $username }}!
-        </h1>
         @if($errors->any)
             @foreach ($errors->all() as $error)
                 <div id="alert-2" class="flex items-center p-4 md:my-3 text-red-800 md:rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -29,7 +26,7 @@
             @endforeach
         @endif
     
-        <div class="relative overflow-x-auto shadow-md rounded-lg mt-8">
+        <div class="relative overflow-x-auto shadow-md rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>

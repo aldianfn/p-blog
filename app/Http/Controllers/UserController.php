@@ -20,9 +20,10 @@ class UserController extends Controller
 
         if (Auth::check()) {
             $user = Auth::user();
+            $username = $user->name;
         }
 
-        return view('dashboard.profile.index', compact('title', 'user'));   
+        return view('dashboard.profile.index', compact('title', 'username'));   
     }
 
     /**

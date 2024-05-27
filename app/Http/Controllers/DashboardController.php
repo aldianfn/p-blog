@@ -12,6 +12,11 @@ class DashboardController extends Controller
     {
         $title = "Dashboard";
 
-        return view('dashboard.index', compact('title'));
+        if (Auth::check()) {
+            $user = Auth::user();
+            $username = $user->name;
+        }
+
+        return view('dashboard.index', compact('title', 'username'));
     }
 }

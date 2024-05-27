@@ -7,7 +7,7 @@
     @include('dashboard.layouts.navbar')
     <div class="p-4">
         <h1 class="text-white"">
-            Hello, {{ $user->name }}!
+            Hello, {{ $username }}!
         </h1>
     </div>
 </div>

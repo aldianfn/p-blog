@@ -47,7 +47,7 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => "49fda24e-128f-4f9a-8d7f-0a979a2e79db",
+            'role_id' => '0709469a-fd06-4779-ae75-94f43d7cd94a',
         ]);
 
         session()->flash('registration_success', 'Your account has been created successfully!');

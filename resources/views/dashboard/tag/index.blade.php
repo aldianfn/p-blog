@@ -7,14 +7,14 @@
     @include('dashboard.layouts.navbar')
     <div class="p-4">
         <div class="text-right mt-3">
-            <a href="{{ route('post.create') }}" class="bg-green-600 text-white rounded-lg px-3 py-2">
-                Create new post
+            <a href="{{ route('tag.create') }}" class="bg-green-600 text-white rounded-lg px-3 py-2">
+                Create new Tag
             </a>
         </div>
         <div class="relative overflow-x-auto shadow-md rounded-lg mt-6">
-            @if($posts->isEmpty())
+            @if($tags->isEmpty())
                 <div class="p-4 text-sm text-blue-800 bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
-                    <span class="font-medium">No post available!</span> Create new post.
+                    <span class="font-medium">No tag available!</span> Create new tag.
                 </div>
             @else
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -24,10 +24,7 @@
                             #
                         </th>
                         <th scope="col" class="px-6 py-3 text-white">
-                            Title
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-white">
-                            Publish date
+                            Name
                         </th>
                         <th scope="col" class="px-6 py-3 lg:w-72 text-white text-center">
                             Action
@@ -35,16 +32,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($posts as $post)
+                    @foreach ($tags as $tag)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="px-6 py-4 text-white">
                                 {{ $loop->iteration }}
                             </td>
                             <td class="px-6 py-4 text-white">
-                                {{ $post->title }}
-                            </td>
-                            <td class="px-6 py-4 text-white">
-                                {{ $post->created_at }}
+                                {{ $tag->name }}
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex flex-col justify-center md:flex-row">

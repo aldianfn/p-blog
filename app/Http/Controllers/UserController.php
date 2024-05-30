@@ -54,14 +54,13 @@ class UserController extends Controller
             $username = $user->name;
         }
 
+        if (!$user->can('view', new User)) {
+            abort(403, 'Unauthorized');
+        }
+
         $roles = Role::all();
         $users = User::with('role')->get();
-
-        // if (Gate::authorize('viewUserMenu', $user)) {
-        //     return view('dashboard.user.index', compact('title', 'username', 'users'));
-        // }
         
-        // return abort(403);
         return view('dashboard.user.index', compact('title', 'username', 'users', 'roles'));
     }
 
@@ -96,6 +95,10 @@ class UserController extends Controller
         // $user->save();
 
         // return back()->with('success', 'User role updated successfully!');
+
+        if (!$user->can('update', new User)) {
+            abort(403, 'Unauthorized');
+        }
 
         $validator = Validator::make($request->all(), [
             'role_id.' . $user->id => ['required', 'exists:roles,id'],

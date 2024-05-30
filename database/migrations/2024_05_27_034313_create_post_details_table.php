@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('post_details', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('attachment_url');
+            $table->string('picture')->nullable();
             $table->foreignUuid('post_id')->onDelete('cascade');
             $table->timestamps();
         });

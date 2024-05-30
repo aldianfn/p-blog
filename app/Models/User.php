@@ -24,6 +24,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'picture',
+        'bio',
+        'facebook',
+        'x',
+        'instagram',
+        'website',
         'role_id',
     ];
 
@@ -48,6 +54,34 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $userRole = Role::where('role', 'User')->firstOrFail();
+            $user->role_id = $userRole->id; // Set role_id to "user" role's ID
+        });
+    }
+
+    public function hasAnyRole($role)
+    {
+        // Check if role is a string (assuming it represents a name)
+        if (is_string($role)) {
+            // Access the role model using the name and compare with user's role_id
+            $roleId = Role::where('role', $role)->first()->id;
+            if ($this->role_id === $roleId) {
+                return true;
+            }
+        } else {
+            // If not a string, assume it's a role object and compare IDs as before
+            if ($this->role_id === $role->id) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function role(): BelongsTo
